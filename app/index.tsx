@@ -1,15 +1,19 @@
-import { Text, View } from "react-native";
+import { useState } from "react";
+import { View } from "react-native";
+
+interface WeatherData {
+  temperature: number,
+  windspeed : number,
+  winddirection : number
+}
 
 export default function Index() {
+
+  const [weather,setWeather] = useState<WeatherData | null>(null);
+  const [loading,setLoading] = useState<boolean>(true);
+
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
+    <View>
     </View>
   );
 }
