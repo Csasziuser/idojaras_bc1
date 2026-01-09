@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ActivityIndicator, Text, View } from "react-native";
+import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
 
 interface WeatherData {
   temperature: number,
@@ -30,14 +30,14 @@ export default function Index() {
   const [loading,setLoading] = useState<boolean>(true);
 
   return (
-    <View>
+    <View style={styles.container}>
       {
         loading ? <ActivityIndicator /> 
                 : 
           weather ? (
             <View>
-              <Text>Eger időjárása</Text>
-              <Text>Hőmérséklet: {weather.temperature}°C</Text>
+              <Text style={styles.location}>Eger időjárása</Text>
+              <Text style={styles.temperature}>Hőmérséklet: {weather.temperature}°C</Text>
               <Text>Szélsebesség: {weather.windspeed} km/h</Text>
               <Text>Szélirány: {weather.winddirection}°</Text>
             </View>
@@ -47,3 +47,22 @@ export default function Index() {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container:{
+    flex :1,
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  location:{
+    color: "magenta",
+    fontSize: 67,
+    textDecorationLine: "underline"
+  },
+  temperature: {
+    color: "#FD8100",
+    fontSize: 41,
+    fontWeight: "bold"
+  }
+
+});
